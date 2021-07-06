@@ -1,0 +1,32 @@
+name: Build PDF
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build PDF
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get install make latexmk texlive-full
+
+      - name: Build PDF
+        run: |
+          make
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: pdf
+          path: build/main.pdf
