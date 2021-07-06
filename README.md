@@ -11,4 +11,9 @@ This should output something like
 [PDF] Revision : e973819b69824d701541cd502fd6b249d32f41fa*
 ```
 
+## Compiling
+
+To compile this project, run `make`.
+Note that `latexmk` alone will not work, as it will not generate the `build/version.tex` file.
+
 [pdf]: https://github.com/qzed/latex-ci-template/releases/download/latest/main.pdf
