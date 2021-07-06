@@ -19,7 +19,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          sudo apt-get install make latexmk texlive-full
+          sudo apt-get install make latexmk texlive texlive-latex-extra
 
       - name: Build PDF
         run: |
