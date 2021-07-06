@@ -30,3 +30,17 @@ jobs:
         with:
           name: pdf
           path: build/main.pdf
+
+      - name: Update 'latest' tag
+        uses: richardsimko/update-tag@v1
+        with:
+          tag_name: latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Rolling Release
+        run: |
+          gh release delete latest -y || true
+          gh release create latest -p -t "Automatic build" -n "Automatic build for commit ${GITHUB_SHA}" build/main.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
