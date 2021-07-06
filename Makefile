@@ -27,7 +27,7 @@ clean:
 distclean: clean
 	$(RM) -r $(DIR_OUT)
 
-directories: $(DIR_OUT)
+directories: | $(DIR_OUT)
 
 # main PDF rule
 $(PAPER_PDF): $(TEX_MASTER_DEPS) | directories
